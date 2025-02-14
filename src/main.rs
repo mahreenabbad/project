@@ -189,8 +189,11 @@ struct Rectangle {
 }
 
 impl Rectangle {
-    fn area(self) -> u16 {
+    fn area(&self) -> u16 {
         self.length * self.breadth
+    }
+    fn update_len(&mut self) {
+        self.length = 50
     }
 }
 fn area_rec(rec: &Rectangle) -> u16 {
@@ -212,5 +215,8 @@ fn main() {
     let result1 = area_rec(&rec);
     println!("Area of Rec :{:#?}", result1);
 
+    println!("Area of Rec via Method : {}", rec.area());
+    println!("Area of Rec via Method : {}", rec.area());
+    rec.update_len();
     println!("Area of Rec via Method : {}", rec.area());
 }
