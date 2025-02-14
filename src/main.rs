@@ -159,3 +159,58 @@
 //     *flag = true;
 // }
 //////////////////////////////////////////////////
+///
+///
+// #[derive(Debug)]
+// struct Student {
+//     name: String,
+//     age: u8,
+//     grade: f32,
+// }
+// fn main() {
+//     let student1: Student = Student {
+//         name: String::from("John"),
+//         age: 20,
+//         grade: 60.5,
+//     };
+//     let student2 = &student1;
+//     // let student2 = Student {
+//     //     name: String::from("Sina"),
+//     //     ..student1
+//     // };
+//     println!("student details : {:#?}", student1);
+//     println!("student details : {:#?}", student2);
+// }
+//////////////////////////////////////////
+// #[derive(Debug)] // to print struct = {:?}
+struct Rectangle {
+    length: u16,
+    breadth: u16,
+}
+
+impl Rectangle {
+    fn area(self) -> u16 {
+        self.length * self.breadth
+    }
+}
+fn area_rec(rec: &Rectangle) -> u16 {
+    rec.length * rec.breadth
+}
+fn update_len(rec: &mut Rectangle) {
+    rec.length = 5;
+}
+
+fn main() {
+    let mut rec = Rectangle {
+        length: 10,
+        breadth: 20,
+    };
+    let result = area_rec(&rec);
+    println!("Area of Rec :{:#?}", result);
+
+    update_len(&mut rec);
+    let result1 = area_rec(&rec);
+    println!("Area of Rec :{:#?}", result1);
+
+    println!("Area of Rec via Method : {}", rec.area());
+}
