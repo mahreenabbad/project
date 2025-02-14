@@ -1,0 +1,161 @@
+// //Countdown Rust
+// //input - 10
+// //10 9 8 7 6 5 ...1
+// use std::io;
+// use std::thread::sleep;
+// use std::time::Duration;
+
+// fn main() {
+//     loop {
+//         let mut input = String::new();
+//         println!("Please enter the timer:");
+//         io::stdin().read_line(&mut input).expect("Invalid Input");
+
+//         // let timer: u16 = input.trim().parse().expect("Invalid number");//If you need the input to be of a specific type
+//         let timer: u16 = match input.trim().parse() {
+//             Ok(timer) => timer,
+//             Err(_) => {
+//                 println!("Invalid number");
+//                 continue;
+//             }
+//         };
+//         start_timer(timer);
+//         break;
+//     }
+// }
+
+// //1 2 3 4 5 6 .. 10 -> (1..=10)
+// //10 9 8 7 6 5 ... 1 -> (1..=10).rev()
+// fn start_timer(timer: u16) {
+//     for i in (1..=timer).rev() {
+//         println!("Timer countdown...{}", i);
+//         sleep(Duration::from_secs(1)); //to have a delay of 1 second
+//     }
+// }
+///////////////////////////////////////////////
+
+// convert natural number to binary
+// use std::io;
+// fn main() {
+//     let mut input = String::new();
+//     println!("Please enter the decimal number:");
+//     io::stdin().read_line(&mut input).expect("invalid input");
+//     let mut decimal_value: u32 = match input.trim().parse() {
+//         Ok(decimal_value) => decimal_value,
+//         Err(_) => {
+//             println!("Invalid number");
+//             return;
+//         }
+//     };
+//     binary_converter(decimal_value);
+//     hex_converter(decimal_value);
+// }
+// fn binary_converter(mut decimal_value: u32) {
+//     let mut binary = String::new();
+//     while decimal_value > 0 {
+//         let remainder: u8 = (decimal_value % 2) as u8;
+//         binary.insert(0, (remainder + 48) as char);
+//         // print!("{}", remainder);
+//         decimal_value = decimal_value / 2;
+//     }
+//     println!("Binary number :{}", binary);
+//     print!("\n");
+// }
+// fn hex_converter(mut decimal_value: u32) {
+//     let mut hex = String::new();
+//     while decimal_value > 0 {
+//         let remainder = (decimal_value % 16) as u8;
+//         if remainder > 9 {
+//             hex.insert(0, (remainder + 55) as char);
+//             // print!("{}", (remainder + 55) as char);
+//         } else {
+//             hex.insert(0, (remainder + 48) as char);
+//             // print!("{}", remainder);
+//         }
+//         decimal_value = decimal_value / 16;
+//     }
+//     println!("Hexadecimal number :{}", hex);
+// }
+//////////////////////////////////////////////////
+/// //  create a baking application
+// take input from the user
+// 1- deposit money
+//2- withdraw money
+//3-check user balance
+//4- exit
+// if user make any wrong choice you have to ask user to retry
+
+// use std::io;
+// fn main() {
+//     let mut user_balance: f64 = 0.0;
+//     let mut flag: bool = false;
+//     loop {
+//         let mut input = String::new();
+//         println!("please enter your choice");
+//         println!("1- deposit money");
+//         println!("2- withdraw money");
+//         println!("3- fetch balance");
+//         println!("4- exit");
+//         io::stdin().read_line(&mut input).expect("Invalid Input");
+//         let choice: u8 = match input.trim().parse() {
+//             Ok(choice) => choice,
+//             Err(_) => {
+//                 println!("Invalid Number");
+//                 continue;
+//             }
+//         };
+//         execute(choice, &mut user_balance, &mut flag);
+//         //println!("User current Balance : {}", user_balance);
+//         if flag == true {
+//             break;
+//         }
+//     }
+// }
+// fn execute(choice: u8, user_balance: &mut f64, flag: &mut bool) {
+//     match choice {
+//         1 => deposit(user_balance),
+//         2 => withdraw(user_balance),
+//         3 => fetch_balance(user_balance),
+//         4 => exit(flag),
+//         _ => println!("Invalid Choice"),
+//     }
+// }
+// fn deposit(user_balance: &mut f64) {
+//     let mut input = String::new();
+//     println!("Please enter the amount to deposit:");
+//     io::stdin().read_line(&mut input).expect("Invalid Input");
+//     let amount: f64 = match input.trim().parse() {
+//         Ok(choice) => choice,
+//         Err(_) => {
+//             println!("Invalid Number");
+//             return;
+//         }
+//     };
+//     *user_balance = *user_balance + amount;
+// }
+
+// fn withdraw(user_balance: &mut f64) {
+//     let mut input = String::new();
+//     println!("Please enter your amount");
+//     io::stdin().read_line(&mut input).expect("Invalid Input");
+
+//     let amount: f64 = match input.trim().parse() {
+//         Ok(choice) => choice,
+//         Err(_) => {
+//             println!("Invalid Number");
+//             return;
+//         }
+//     };
+//     if *user_balance < amount {
+//         return;
+//     }
+//     *user_balance = *user_balance - amount;
+// }
+
+// fn fetch_balance(user_balance: &mut f64) {
+//     println!("User current Balance : {}", user_balance);
+// }
+// fn exit(flag: &mut bool) {
+//     *flag = true;
+// }
+//////////////////////////////////////////////////
