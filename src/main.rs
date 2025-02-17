@@ -183,40 +183,160 @@
 // }
 //////////////////////////////////////////
 // #[derive(Debug)] // to print struct = {:?}
-struct Rectangle {
-    length: u16,
-    breadth: u16,
+// struct Rectangle {
+//     length: u16,
+//     breadth: u16,
+// }
+
+// impl Rectangle {
+//     fn area(&self) -> u16 {
+//         self.length * self.breadth
+//     }
+//     fn update_len(&mut self) {
+//         self.length = 50
+//     }
+// }
+// fn area_rec(rec: &Rectangle) -> u16 {
+//     rec.length * rec.breadth
+// }
+// fn update_len(rec: &mut Rectangle) {
+//     rec.length = 5;
+// }
+
+// fn main() {
+//     let mut rec = Rectangle {
+//         length: 10,
+//         breadth: 20,
+//     };
+//     let result = area_rec(&rec);
+//     println!("Area of Rec :{:#?}", result);
+
+//     update_len(&mut rec);
+//     let result1 = area_rec(&rec);
+//     println!("Area of Rec :{:#?}", result1);
+
+//     println!("Area of Rec via Method : {}", rec.area());
+//     println!("Area of Rec via Method : {}", rec.area());
+//     rec.update_len();
+//     println!("Area of Rec via Method : {}", rec.area());
+// }
+////////////////////////////////////
+#[derive(Debug)]
+struct Pair<T, U> {
+    value1: T,
+    value2: U,
 }
 
-impl Rectangle {
-    fn area(&self) -> u16 {
-        self.length * self.breadth
+impl<T, U> Pair<T, U> {
+    fn value1(&self) -> &T {
+        &self.value1
     }
-    fn update_len(&mut self) {
-        self.length = 50
+    fn value2(&self) -> &U {
+        &self.value2
     }
-}
-fn area_rec(rec: &Rectangle) -> u16 {
-    rec.length * rec.breadth
-}
-fn update_len(rec: &mut Rectangle) {
-    rec.length = 5;
+    fn swap(self) -> Pair<U, T> {
+        Pair {
+            value1: self.value2,
+            value2: self.value1,
+        }
+    }
 }
 
 fn main() {
-    let mut rec = Rectangle {
-        length: 10,
-        breadth: 20,
+    let pair = Pair {
+        value1: "Hello",
+        value2: 42,
     };
-    let result = area_rec(&rec);
-    println!("Area of Rec :{:#?}", result);
-
-    update_len(&mut rec);
-    let result1 = area_rec(&rec);
-    println!("Area of Rec :{:#?}", result1);
-
-    println!("Area of Rec via Method : {}", rec.area());
-    println!("Area of Rec via Method : {}", rec.area());
-    rec.update_len();
-    println!("Area of Rec via Method : {}", rec.area());
+    println!("value1: {:?}", pair.value1);
+    println!("value2: {:?}", pair.value2);
+    let swapped_pair = pair.swap();
+    println!("swapped_pair: {:?}", swapped_pair);
+    // println!(
+    //     "After swap value1 :{}, value2: {}",
+    //     swapped_pair.value1, swapped_pair.value2
+    // );
 }
+/////////////////////////////
+// #[derive(Debug)]
+// struct Book {
+//     title: String,
+//     author: String,
+//     is_available: bool,
+// }
+// #[derive(Debug)]
+// struct Library {
+//     name: String,
+//     address: String,
+//     book: Option<Book>,
+// }
+
+// impl Book {
+//     fn borrow(&mut self) -> Result<&mut Book, LibraryError> {
+//         // used result enum here
+//         if self.is_available == true {
+//             self.is_available = false;
+//             Ok(self)
+//         } else {
+//             Err(LibraryError::AlreadyBorrowed)
+//         }
+//     }
+//     fn return_book() {}
+// }
+
+// impl Library {
+//     fn add_book() {}
+//     fn borrorw_book(&mut self) -> Result<&mut Book, LibraryError> {
+//         if let Some(book) = self.book.as_mut() {
+//             // using destructring here
+//             match book.borrow() {
+//                 Ok(borrowed_book) => {
+//                     println!("Book is borrowed");
+//                     Ok(borrowed_book)
+//                 }
+//                 Err(err) => {
+//                     println!("Book is already borrowed");
+//                     Err(err)
+//                 }
+//             }
+//         } else {
+//             Err(LibraryError::BookNotFound)
+//         }
+//     }
+//     fn return_book() {}
+// }
+// #[derive(Debug)]
+// enum LibraryError {
+//     BookNotAvailable,
+//     BookNotFound,
+//     AlreadyBorrowed,
+// }
+// fn main() {
+//     let book = Book {
+//         title: String::from("The Rust Book"),
+//         author: String::from("Steve Klabnik"),
+//         is_available: true,
+//     };
+//     let mut library = Library {
+//         name: String::from("City Library"),
+//         address: String::from("123 Main St"),
+//         book: Some(book), //assuming there is only one book in library of Rust book
+//     };
+//     // attemp to borrow the book and handle result
+//     match library.borrorw_book() {
+//         Ok(result) => {
+//             println!("Borrowed book: {:?}", result);
+//         }
+//         Err(err) => {
+//             println!("Error: {:?}", err);
+//         }
+//     }
+//     // try borrow it again
+//     match library.borrorw_book() {
+//         Ok(result) => {
+//             println!("Borrowed book: {:?}", result);
+//         }
+//         Err(err) => {
+//             println!("Error: {:?}", err);
+//         }
+//     }
+// }
