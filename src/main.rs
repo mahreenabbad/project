@@ -221,42 +221,57 @@
 //     println!("Area of Rec via Method : {}", rec.area());
 // }
 ////////////////////////////////////
-#[derive(Debug)]
-struct Pair<T, U> {
-    value1: T,
-    value2: U,
-}
+// #[derive(Debug)]
+// struct Pair<T, U> {
+//     value1: T,
+//     value2: U,
+// }
 
-impl<T, U> Pair<T, U> {
-    fn value1(&self) -> &T {
-        &self.value1
-    }
-    fn value2(&self) -> &U {
-        &self.value2
-    }
-    fn swap(self) -> Pair<U, T> {
-        Pair {
-            value1: self.value2,
-            value2: self.value1,
-        }
-    }
-}
+// impl<T, U> Pair<T, U> {
+//     fn value1(&self) -> &T {
+//         &self.value1
+//     }
+//     fn value2(&self) -> &U {
+//         &self.value2
+//     }
+//     fn swap(self) -> Pair<U, T> {
+//         Pair {
+//             value1: self.value2,
+//             value2: self.value1,
+//         }
+//     }
+// }
 
+// fn main() {
+//     let pair = Pair {
+//         value1: "Hello",
+//         value2: 42,
+//     };
+//     println!("value1: {:?}", pair.value1);
+//     println!("value2: {:?}", pair.value2);
+//     let swapped_pair = pair.swap();
+//     println!("swapped_pair: {:?}", swapped_pair);
+//     // println!(
+//     //     "After swap value1 :{}, value2: {}",
+//     //     swapped_pair.value1, swapped_pair.value2
+//     // );
+// // }
+/////////////////////////////////////////////////
 fn main() {
-    let pair = Pair {
-        value1: "Hello",
-        value2: 42,
-    };
-    println!("value1: {:?}", pair.value1);
-    println!("value2: {:?}", pair.value2);
-    let swapped_pair = pair.swap();
-    println!("swapped_pair: {:?}", swapped_pair);
-    // println!(
-    //     "After swap value1 :{}, value2: {}",
-    //     swapped_pair.value1, swapped_pair.value2
-    // );
+    let arr = [
+        String::from("hello"),
+        String::from("world"),
+        String::from("coders"),
+    ];
+    for element in arr.iter() {
+        println!("{:?}", element);
+    }
+    for item in arr {
+        println!("{:?}", item);
+    }
 }
-/////////////////////////////
+//////////////////////////
+
 // #[derive(Debug)]
 // struct Book {
 //     title: String,
