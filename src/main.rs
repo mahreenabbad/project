@@ -228,12 +228,12 @@
 // }
 
 // impl<T, U> Pair<T, U> {
-//     fn value1(&self) -> &T {
-//         &self.value1
-//     }
-//     fn value2(&self) -> &U {
-//         &self.value2
-//     }
+//     // fn value1(&self) -> &T {
+//     //     &self.value1
+//     // }
+//     // fn value2(&self) -> &U {
+//     //     &self.value2
+//     // }
 //     fn swap(self) -> Pair<U, T> {
 //         Pair {
 //             value1: self.value2,
@@ -251,25 +251,27 @@
 //     println!("value2: {:?}", pair.value2);
 //     let swapped_pair = pair.swap();
 //     println!("swapped_pair: {:?}", swapped_pair);
+
 //     // println!(
 //     //     "After swap value1 :{}, value2: {}",
 //     //     swapped_pair.value1, swapped_pair.value2
 //     // );
-// // }
+// }
 /////////////////////////////////////////////////
-fn main() {
-    let arr = [
-        String::from("hello"),
-        String::from("world"),
-        String::from("coders"),
-    ];
-    for element in arr.iter() {
-        println!("{:?}", element);
-    }
-    for item in arr {
-        println!("{:?}", item);
-    }
-}
+// fn main() {
+//     let arr = [
+//         String::from("hello"),
+//         String::from("world"),
+//         String::from("coders"),
+//     ];
+//     for element in arr.iter() {
+//         println!("{:?}", element);
+//     }
+//     println!("{:?}", arr);
+//     for item in arr {
+//         println!("{:?}", item);
+//     }
+// }
 /////////////////////////////////////
 
 // #[derive(Debug)]
@@ -295,35 +297,46 @@ fn main() {
 //             Err(LibraryError::AlreadyBorrowed)
 //         }
 //     }
-//     fn return_book() {}
+//     fn return_book(&mut self) {
+//         self.is_available = true;
+//     }
 // }
 
 // impl Library {
-//     fn add_book() {}
+//     fn add_book(&mut self, book: Book) -> Result<(), LibraryError> {
+//         if self.book.is_none() {
+//             self.book = Some(book);
+//             Ok(())
+//         } else {
+//             Err(LibraryError::BookAlreadyExist)
+//         }
+//     }
 //     fn borrorw_book(&mut self) -> Result<&mut Book, LibraryError> {
 //         if let Some(book) = self.book.as_mut() {
 //             // using destructring here
 //             match book.borrow() {
-//                 Ok(borrowed_book) => {
-//                     println!("Book is borrowed");
-//                     Ok(borrowed_book)
-//                 }
-//                 Err(err) => {
-//                     println!("Book is already borrowed");
-//                     Err(err)
-//                 }
+//                 Ok(borrowed_book) => Ok(borrowed_book),
+//                 Err(err) => Err(err),
 //             }
 //         } else {
 //             Err(LibraryError::BookNotFound)
 //         }
 //     }
-//     fn return_book() {}
+//     fn return_book(&mut self) -> Result<(), LibraryError> {
+//         if let Some(book) = self.book.as_mut() {
+//             book.return_book();
+//             Ok(())
+//         } else {
+//             Err(LibraryError::BookNotFound)
+//         }
+//     }
 // }
 // #[derive(Debug)]
 // enum LibraryError {
 //     BookNotAvailable,
 //     BookNotFound,
 //     AlreadyBorrowed,
+//     BookAlreadyExist,
 // }
 // fn main() {
 //     let book = Book {
@@ -334,12 +347,28 @@ fn main() {
 //     let mut library = Library {
 //         name: String::from("City Library"),
 //         address: String::from("123 Main St"),
-//         book: Some(book), //assuming there is only one book in library of Rust book
+//         book: None, //assuming there is only one book in library of Rust book
 //     };
+//     match library.add_book(book) {
+//         Ok(_) => {
+//             println!("Book added to library");
+//         }
+//         Err(err) => {
+//             println!("Error: {:?}", err);
+//         }
+//     }
 //     // attemp to borrow the book and handle result
 //     match library.borrorw_book() {
 //         Ok(result) => {
 //             println!("Borrowed book: {:?}", result);
+//         }
+//         Err(err) => {
+//             println!("Error: {:?}", err);
+//         }
+//     }
+//     match library.return_book() {
+//         Ok(_) => {
+//             println!("Returned book sucessfully:");
 //         }
 //         Err(err) => {
 //             println!("Error: {:?}", err);
@@ -355,3 +384,39 @@ fn main() {
 //         }
 //     }
 // }
+/////////////////////////////////////////////////
+/// trait
+// struct Student {
+//     name: String,
+// }
+// trait Name {
+//     fn change_name(&mut self, new_name: String);
+// }
+// impl Name for Student {
+//     fn change_name(&mut self, new_name: String) {
+//         self.name = new_name;
+//     }
+// }
+// fn main() {
+//     let mut student = Student {
+//         name: String::from("Mahreen"),
+//     };
+//     println!("Before changing name: {}", student.name);
+//     student.change_name(String::from("Abbad"));
+//     println!("After changing name: {}", student.name);
+// }
+//////////////////
+//generic types
+
+pub fn num<T: std::fmt::Display>(value: T) {
+    println!("The number is: {}", value);
+}
+fn main() {
+    let value = 10;
+
+    num(value);
+    let status = true;
+    num(status);
+    let number = 5.5;
+    num(number);
+}
