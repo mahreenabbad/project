@@ -1,5 +1,5 @@
 // //Countdown Rust
-// //input - 10
+// //input --- 10
 // //10 9 8 7 6 5 ...1
 // use std::io;
 // use std::thread::sleep;
