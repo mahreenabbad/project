@@ -443,4 +443,9 @@ fn main() {
     println!("Value: {}", container.get());
     container.set(10);
     println!("Value: {}", container.get());
+
+    let mut container = Container::new(true);
+    println!("Value: {}", container.get());
+    container.set(false);
+    println!("Value: {}", container.get());
 }
