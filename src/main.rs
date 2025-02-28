@@ -298,7 +298,7 @@
 //         }
 //     }
 //     fn return_book(&mut self) {
-//         self.is_available = true;
+//      6   self.is_available = true;
 //     }
 // }
 
@@ -408,15 +408,39 @@
 //////////////////
 //generic types
 
-pub fn num<T: std::fmt::Display>(value: T) {
-    println!("The number is: {}", value);
+// pub fn num<T: std::fmt::Display>(value: T) {
+//     println!("The number is: {}", value);
+// }
+// fn main() {
+//     let value = 10;
+
+//     num(value);
+//     let status = true;
+//     num(status);
+//     let number = 5.5;
+//     num(number);
+// }
+///////////////////////////////////
+///
+struct Container<T> {
+    value: T,
+}
+
+impl<T: Clone> Container<T> {
+    fn new(new_value: T) -> Self {
+        Self { value: new_value }
+    }
+    fn set(&mut self, new_value: T) {
+        self.value = new_value;
+    }
+
+    fn get(&self) -> T {
+        self.value.clone()
+    }
 }
 fn main() {
-    let value = 10;
-
-    num(value);
-    let status = true;
-    num(status);
-    let number = 5.5;
-    num(number);
+    let mut container = Container::new(5);
+    println!("Value: {}", container.get());
+    container.set(10);
+    println!("Value: {}", container.get());
 }
