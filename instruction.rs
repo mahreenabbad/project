@@ -10,6 +10,7 @@ use solana_program::{
 };
 
 
+
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
 pub struct LockArgs {
     /// Recipient address
