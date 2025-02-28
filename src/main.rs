@@ -448,4 +448,9 @@ fn main() {
     println!("Value: {}", container.get());
     container.set(false);
     println!("Value: {}", container.get());
+
+    let mut container = Container::new(String::from("Raj"));
+    println!("Value: {}", container.get());
+    container.set(String::from("Verma"));
+    println!("Value: {}", container.get());
 }
