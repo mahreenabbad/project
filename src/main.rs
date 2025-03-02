@@ -422,35 +422,51 @@
 // }
 ///////////////////////////////////
 ///
-struct Container<T> {
-    value: T,
-}
+// struct Container<T> {
+//     value: T,
+// }
 
-impl<T: Clone> Container<T> {
-    fn new(new_value: T) -> Self {
-        Self { value: new_value }
-    }
-    fn set(&mut self, new_value: T) {
-        self.value = new_value;
-    }
+// impl<T: Clone> Container<T> {
+//     fn new(new_value: T) -> Self {
+//         Self { value: new_value }
+//     }
+//     fn set(&mut self, new_value: T) {
+//         self.value = new_value;
+//     }
 
-    fn get(&self) -> T {
-        self.value.clone()
-    }
-}
+//     fn get(&self) -> T {
+//         self.value.clone()
+//     }
+// }
+// fn main() {
+//     let mut container = Container::new(5);
+//     println!("Value: {}", container.get());
+//     container.set(10);
+//     println!("Value: {}", container.get());
+
+//     let mut container = Container::new(true);
+//     println!("Value: {}", container.get());
+//     container.set(false);
+//     println!("Value: {}", container.get());
+
+//     let mut container = Container::new(String::from("Raj"));
+//     println!("Value: {}", container.get());
+//     container.set(String::from("Verma"));
+//     println!("Value: {}", container.get());
+// }
+/////////////////////////////////////////////
+/// write a function that remove all white spaces from a string
+use std::io;
 fn main() {
-    let mut container = Container::new(5);
-    println!("Value: {}", container.get());
-    container.set(10);
-    println!("Value: {}", container.get());
-
-    let mut container = Container::new(true);
-    println!("Value: {}", container.get());
-    container.set(false);
-    println!("Value: {}", container.get());
-
-    let mut container = Container::new(String::from("Raj"));
-    println!("Value: {}", container.get());
-    container.set(String::from("Verma"));
-    println!("Value: {}", container.get());
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Invalid Input");
+    remove_whitespace(&mut input);
+}
+fn remove_whitespace(input: &mut String) {
+    let words = input.split_whitespace();
+    println!("{:?}", words);
+    let vec: Vec<&str> = words.collect();
+    println!("{:?}", vec);
+    let Joined_word = vec.join("");
+    println!("{:?}", Joined_word);
 }
