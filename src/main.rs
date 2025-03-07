@@ -462,25 +462,36 @@
 // }
 /////////////////////////////////////////////
 /// write a function that remove all white spaces from a string
-use std::io;
-fn main() {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Invalid Input");
-    remove_whitespace(&mut input);
-}
-fn remove_whitespace(input: &mut String) {
-    //
-    // let words = input.split_whitespace().collect::<Vec<&str>>().join("");
-    // println!("{:?}", words);
-    // let words = input.split_whitespace();
+// use std::io;
+// fn main() {
+//     let mut input = String::new();
+//     io::stdin().read_line(&mut input).expect("Invalid Input");
+//     remove_whitespace(&mut input);
+// }
+// fn remove_whitespace(input: &mut String) {
+//     //
+//     // let words = input.split_whitespace().collect::<Vec<&str>>().join("");
+//     // println!("{:?}", words);
+//     // let words = input.split_whitespace();
 
-    // let vec: Vec<&str> = words.collect();
-    // println!("{:?}", vec);
-    // let Joined_word = vec.join("");
-    // println!("{:?}", Joined_word);
-    let trimmed_input = input.trim();
-    let character = trimmed_input.chars();
-    let reverse_char = character.rev();
-    let reverse_string: String = reverse_char.collect();
-    println!("{:?}", reverse_string);
+//     // let vec: Vec<&str> = words.collect();
+//     // println!("{:?}", vec);
+//     // let Joined_word = vec.join("");
+//     // println!("{:?}", Joined_word);
+//     let trimmed_input = input.trim();
+//     let character = trimmed_input.chars();
+//     let reverse_char = character.rev();
+//     let reverse_string: String = reverse_char.collect();
+//     println!("{:?}", reverse_string);
+// }
+////////
+/// palindrome
+/// 
+fn palindrome_check(input : String){
+    let original_str = input.clone();
+    let reverse_string :String = input.trim().chars().rev().collect();
+    println!("{}", original_str == reverse_string);
+}
+fn main(){
+    palindrome_check("wow".to_string());
 }
