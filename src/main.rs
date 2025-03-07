@@ -1,5 +1,3 @@
-
-
 // //Countdown Rust
 // //input --- 10
 // //10 9 8 7 6 5 ...1
@@ -465,10 +463,18 @@ fn main() {
     remove_whitespace(&mut input);
 }
 fn remove_whitespace(input: &mut String) {
-    let words = input.split_whitespace();
-    println!("{:?}", words);
-    let vec: Vec<&str> = words.collect();
-    println!("{:?}", vec);
-    let Joined_word = vec.join("");
-    println!("{:?}", Joined_word);
+    //
+    // let words = input.split_whitespace().collect::<Vec<&str>>().join("");
+    // println!("{:?}", words);
+    // let words = input.split_whitespace();
+
+    // let vec: Vec<&str> = words.collect();
+    // println!("{:?}", vec);
+    // let Joined_word = vec.join("");
+    // println!("{:?}", Joined_word);
+    let trimmed_input = input.trim();
+    let character = trimmed_input.chars();
+    let reverse_char = character.rev();
+    let reverse_string: String = reverse_char.collect();
+    println!("{:?}", reverse_string);
 }
