@@ -1,9 +1,15 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d56fbe1e0ff12d4cb5d6a520c0d0fe0556844d70
 // //Countdown Rust
+
 // //input --- 10
 // //10 9 8 7 6 5 ...1
 // use std::io;
 // use std::thread::sleep;
 // use std::time::Duration;
+
 
 // fn main() {
 //     loop {
