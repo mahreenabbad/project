@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> d56fbe1e0ff12d4cb5d6a520c0d0fe0556844d70
+use std::io;
 // //Countdown Rust
 
 // //input --- 10
@@ -9,7 +6,6 @@
 // use std::io;
 // use std::thread::sleep;
 // use std::time::Duration;
-
 
 // fn main() {
 //     loop {
@@ -486,12 +482,40 @@
 // }
 ////////
 /// palindrome
-/// 
-fn palindrome_check(input : String){
-    let original_str = input.clone();
-    let reverse_string :String = input.trim().chars().rev().collect();
-    println!("{}", original_str == reverse_string);
+///
+// fn palindrome_check(input: String) {
+//     let original_str: String = input.clone();
+//     let reverse_string: String = input.trim().chars().rev().collect();
+//     println!("{}", original_str == reverse_string);
+// }
+
+// fn main() {
+//     palindrome_check("wow".to_string());
+// }
+//Counter
+struct Counter {
+    counter: u32,
 }
-fn main(){
-    palindrome_check("wow".to_string());
+impl Counter {
+    fn new() -> Self {
+        Counter { counter: 0 }
+    }
+}
+impl Iterator for Counter {
+    type Item = u32;
+    fn next(&mut self) -> Option<Self::Item> {
+        self.counter = self.counter + 1;
+
+        if self.counter < 5 {
+            Some(self.counter)
+        } else {
+            None
+        }
+    }
+}
+fn main() {
+    let mut counter = Counter::new();
+    while let Some(value) = counter.next() {
+        println!("{}", value);
+    }
 }
