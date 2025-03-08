@@ -8,6 +8,8 @@ use solana_program::{
     pubkey::Pubkey,
     system_program, sysvar,
 };
+
+
 //trait
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
 pub struct LockArgs {
