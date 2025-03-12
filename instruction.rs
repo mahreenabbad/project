@@ -10,6 +10,7 @@ use solana_program::{
 };
 
 
+
 //trait
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
 pub struct LockArgs {
