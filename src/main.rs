@@ -523,17 +523,23 @@
 ////////////////////////////
 ///
 //CLOSURE
+// fn main() {
+// let mut counter = 0;
+// let mut increament = || {
+//     counter += 1;
+//     println!("Counter: {}", counter);
+// };
+// increament();
+// increament();
+// increament();
+//     let x = 10;
+//     let add_number = |y: i32| y + x;
+//     println!("{}", add_number(20));
+//     println!("{}", add_number(30));
+// }
+
 fn main() {
-    // let mut counter = 0;
-    // let mut increament = || {
-    //     counter += 1;
-    //     println!("Counter: {}", counter);
-    // };
-    // increament();
-    // increament();
-    // increament();
-    let x = 10;
-    let add_number = |y: i32| y + x;
-    println!("{}", add_number(20));
-    println!("{}", add_number(30));
+    let values = vec![10, 20, 30, 79, 31, 40, 50];
+    let even_vector: Vec<i32> = values.into_iter().filter(|x| x % 2 == 0).collect();
+    println!("{:?}", even_vector);
 }
