@@ -538,8 +538,19 @@
 //     println!("{}", add_number(30));
 // }
 
+// fn main() {
+//     let values = vec![10, 20, 30, 79, 31, 40, 50];
+//     let even_vector: Vec<i32> = values.into_iter().filter(|x| x % 2 == 0).collect();
+//     println!("{:?}", even_vector);
+// }
+// how to apply ownership on closure
+
 fn main() {
-    let values = vec![10, 20, 30, 79, 31, 40, 50];
-    let even_vector: Vec<i32> = values.into_iter().filter(|x| x % 2 == 0).collect();
-    println!("{:?}", even_vector);
+    let x = String::from("hello world");
+    let consume_and_return_x = || &x;
+    println!("{}", x);
+    let y = consume_and_return_x();
+    println!("{}", y);
+    let z = consume_and_return_x();
+    println!("{}", z);
 }
