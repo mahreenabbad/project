@@ -554,8 +554,5 @@ fn main() {
     let z = consume_and_return_x();
     println!("{}", z);
     let mut x_mut = x.clone();
-    let consume_and_modify_x = || {
-        x_mut.push('!');
-        println!("{}", x_mut);
-    };
+    
 }
