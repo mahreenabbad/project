@@ -545,14 +545,77 @@
 // }
 // how to apply ownership on closure
 
+// fn main() {
+//     let x = String::from("hello world");
+//     let consume_and_return_x = || &x;
+//     println!("{}", x);
+//     let y = consume_and_return_x();
+//     println!("{}", y);
+//     let z = consume_and_return_x();
+//     println!("{}", z);
+//     let mut x_mut = x.clone();
+
+// }
+/////////////////////
+/// TO DO list -addtask - remove task, exit
+use std::io::{self, Read};
 fn main() {
-    let x = String::from("hello world");
-    let consume_and_return_x = || &x;
-    println!("{}", x);
-    let y = consume_and_return_x();
-    println!("{}", y);
-    let z = consume_and_return_x();
-    println!("{}", z);
-    let mut x_mut = x.clone();
-    
+    let mut choice = String::new();
+    let mut task_list: Vec<String> = Vec::new();
+    loop {
+        println!("Please enter your choice");
+        println!("1- Add Task");
+        println!("2- Remove Task");
+        println!("3- View Task");
+        println!("4- Exit");
+
+        io::stdin().read_line(&mut choice).expect("Invalid Input");
+        let choice: i32 = choice.trim().parse().expect("Invalid number");
+
+        match choice {
+            1 => add_task(&mut task_list),
+            2 => remove_task(&mut task_list),
+            3 => view_task(&task_list),
+            4 => {
+                println!("Exiting the program");
+                break;
+            }
+            _ => println!("Invalid Choice"),
+        }
+    }
+}
+
+fn add_task(task_list: &mut Vec<String>) {
+    let mut description = String::new();
+    println!("Please enter the task description:");
+    io::stdin()
+        .read_line(&mut description)
+        .expect("Invalid Input");
+    if description.is_empty() {
+        task_list.push(description);
+    } else {
+        println!("Description can not be empty");
+    }
+}
+fn remove_task(task_list: &mut Vec<String>) {
+    if task_list.is_empty() {
+        println!("No task to remove");
+        return;
+    }
+    println!("Enter task number to remove task");
+    view_task(task_list);
+    let mut task_number = String::new();
+    io::stdin()
+        .read_line(&mut task_number)
+        .expect("Invalid Input");
+    let task_number: usize = task_number.trim().parse().expect("Invalid number");
+    task_list.remove(task_number - 1);
+    println!("Task removed successfully");
+}
+fn view_task(task_list: &Vec<String>) {
+    if task_list.is_empty() {
+        println!("No task to show");
+        return;
+    }
+    println!("Task List:{:?} ", task_list);
 }
