@@ -570,7 +570,7 @@ fn main() {
         println!("4- Exit");
 
         io::stdin().read_line(&mut choice).expect("Invalid Input");
-        let choice: i32 = choice.trim().parse().expect("Invalid number");
+        let choice: usize = choice.trim().parse().expect("Invalid number");
 
         match choice {
             1 => add_task(&mut task_list),
