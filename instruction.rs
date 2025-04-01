@@ -14,6 +14,8 @@ use solana_program::{
 
 //trait
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
+
+
 pub struct LockArgs {
     /// Recipient address
     pub recipient: Address,
