@@ -558,19 +558,19 @@
 // }
 /////////////////////
 /// TO DO list -addtask - remove task, exit
-use std::io::{self, Read};
+use std::io;
 fn main() {
-    let mut choice = String::new();
     let mut task_list: Vec<String> = Vec::new();
     loop {
+        let mut choice = String::new();
         println!("Please enter your choice");
         println!("1- Add Task");
         println!("2- Remove Task");
         println!("3- View Task");
         println!("4- Exit");
-
+        // choice.clear();
         io::stdin().read_line(&mut choice).expect("Invalid Input");
-        let choice: usize = choice.trim().parse().expect("Invalid number");
+        let choice: i32 = choice.trim().parse().expect("Invalid number");
 
         match choice {
             1 => add_task(&mut task_list),
@@ -591,7 +591,8 @@ fn add_task(task_list: &mut Vec<String>) {
     io::stdin()
         .read_line(&mut description)
         .expect("Invalid Input");
-    if description.is_empty() {
+    let description = description.trim().to_string();
+    if !description.is_empty() {
         task_list.push(description);
     } else {
         println!("Description can not be empty");
@@ -603,6 +604,7 @@ fn remove_task(task_list: &mut Vec<String>) {
         return;
     }
     println!("Enter task number to remove task");
+
     view_task(task_list);
     let mut task_number = String::new();
     io::stdin()
