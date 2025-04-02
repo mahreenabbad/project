@@ -558,16 +558,24 @@
 // }
 /////////////////////
 /// TO DO list -addtask - remove task, exit
-use std::io;
+use std::io::{self, Read};
+struct Task {
+    description: String,
+    priority: u8,
+    completed: bool,
+}
 fn main() {
-    let mut task_list: Vec<String> = Vec::new();
+    let mut task_list: Vec<Task> = Vec::new();
     loop {
         let mut choice = String::new();
         println!("Please enter your choice");
         println!("1- Add Task");
         println!("2- Remove Task");
         println!("3- View Task");
-        println!("4- Exit");
+        println!("4- view completed task");
+        println!("5- view pending task");
+        println!("6- Mark complete");
+        println!("7- change priorty");
         // choice.clear();
         io::stdin().read_line(&mut choice).expect("Invalid Input");
         let choice: i32 = choice.trim().parse().expect("Invalid number");
@@ -576,7 +584,11 @@ fn main() {
             1 => add_task(&mut task_list),
             2 => remove_task(&mut task_list),
             3 => view_task(&task_list),
-            4 => {
+            4 => view_completed_task(&task_list),
+            5 => view_pending_task(&task_list),
+            6 => mark_completed(&mut task_list),
+            7 => change_priorty(&mut task_list),
+            8 => {
                 println!("Exiting the program");
                 break;
             }
@@ -585,7 +597,11 @@ fn main() {
     }
 }
 
-fn add_task(task_list: &mut Vec<String>) {
+fn view_completed_task(task_list: &Vec<Task>) {}
+fn view_completed_task(task_list: &Vec<Task>) {}
+fn view_completed_task(task_list: &Vec<Task>) {}
+fn view_completed_task(task_list: &Vec<Task>) {}
+fn add_task(task_list: &mut Vec<Task>) {
     let mut description = String::new();
     println!("Please enter the task description:");
     io::stdin()
@@ -598,7 +614,7 @@ fn add_task(task_list: &mut Vec<String>) {
         println!("Description can not be empty");
     }
 }
-fn remove_task(task_list: &mut Vec<String>) {
+fn remove_task(task_list: &mut Vec<Task>) {
     if task_list.is_empty() {
         println!("No task to remove");
         return;
@@ -610,14 +626,44 @@ fn remove_task(task_list: &mut Vec<String>) {
     io::stdin()
         .read_line(&mut task_number)
         .expect("Invalid Input");
-    let task_number: usize = task_number.trim().parse().expect("Invalid number");
-    task_list.remove(task_number - 1);
-    println!("Task removed successfully");
+    match task_number.trim().parse::<usize>() {
+        Ok(task_number) => {
+            if task_number > task_list.len() {
+                println!("wrong task number");
+                return;
+            }
+            task_list.remove(task_number - 1);
+            println!("Task removed successfully");
+        }
+        Err(_) => {
+            println!("error situation");
+            return;
+        }
+    }
 }
-fn view_task(task_list: &Vec<String>) {
+fn view_task(task_list: &Vec<Task>) {
     if task_list.is_empty() {
         println!("No task to show");
         return;
     }
     println!("Task List:{:?} ", task_list);
+}
+
+fn edit_task(task_list: &mut Vec<Task>) {
+    if task_list.is_empty() {
+        println!("No task to edit");
+    }
+    println!("Enter task number to edit task");
+    view_task(task_list);
+    let mut task_number = String::new();
+    io::stdin()
+        .read_line(&mut task_number)
+        .expect("Invalid Input");
+    let task_number: usize = task_number.trim().parse().expect("Invalid number");
+    println!("type update task");
+    let mut new_task = String::new();
+    io::stdin()
+        .read_line(&mut new_task)
+        .expect("something wentwrong");
+    task_list[task_number - 1] = new_task.trim().to_string();
 }
