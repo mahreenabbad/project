@@ -598,9 +598,10 @@ fn main() {
 }
 
 fn view_completed_task(task_list: &Vec<Task>) {}
+fn view_pending_task(task_list: &Vec<Task>) {}
 fn view_completed_task(task_list: &Vec<Task>) {}
-fn view_completed_task(task_list: &Vec<Task>) {}
-fn view_completed_task(task_list: &Vec<Task>) {}
+fn mark_completed(task_list: &Vec<Task>) {}
+fn change_priorty(task_list: &Vec<Task>) {}
 fn add_task(task_list: &mut Vec<Task>) {
     let mut description = String::new();
     println!("Please enter the task description:");
