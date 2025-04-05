@@ -564,6 +564,15 @@ struct Task {
     priority: u8,
     completed: bool,
 }
+impl Task {
+    fn new(description: String, priority: u8) -> Self {
+        Self {
+            description: description,
+            priority: priority,
+            completed: false,
+        }
+    }
+}
 fn main() {
     let mut task_list: Vec<Task> = Vec::new();
     loop {
@@ -599,7 +608,6 @@ fn main() {
 
 fn view_completed_task(task_list: &Vec<Task>) {}
 fn view_pending_task(task_list: &Vec<Task>) {}
-fn view_completed_task(task_list: &Vec<Task>) {}
 fn mark_completed(task_list: &Vec<Task>) {}
 fn change_priorty(task_list: &Vec<Task>) {}
 fn add_task(task_list: &mut Vec<Task>) {
