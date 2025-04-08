@@ -657,6 +657,7 @@ fn remove_task(task_list: &mut Vec<Task>) {
         }
     }
 }
+//view task function
 fn view_task(task_list: &Vec<Task>) {
     if task_list.is_empty() {
         println!("No task to show");
@@ -665,7 +666,7 @@ fn view_task(task_list: &Vec<Task>) {
     println!("Task List:{:?} ", task_list);
 }
 
-//editbtask function
+//edit task function
 
 // fn edit_task(task_list: &mut Vec<Task>) {
 //     if task_list.is_empty() {
