@@ -630,6 +630,7 @@ fn add_task(task_list: &mut Vec<Task>) {
         println!("Description or priority is invalid");
     }
 }
+//remove task function
 fn remove_task(task_list: &mut Vec<Task>) {
     if task_list.is_empty() {
         println!("No task to remove");
