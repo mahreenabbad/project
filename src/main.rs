@@ -607,7 +607,17 @@ fn main() {
     }
 }
 
-fn view_completed_task(task_list: &Vec<Task>) {}
+fn view_completed_task(task_list: &Vec<Task>) {
+    if task_list.is_empty() {
+        println!("No tasks are found");
+        return;
+    }
+    for task in task_list {
+        if task.completed == true {
+            println!("{:?}", task);
+        }
+    }
+}
 fn view_pending_task(task_list: &Vec<Task>) {}
 fn mark_completed(task_list: &mut Vec<Task>) {}
 fn change_priorty(task_list: &mut Vec<Task>) {}
