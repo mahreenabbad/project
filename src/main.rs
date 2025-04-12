@@ -618,8 +618,43 @@ fn view_completed_task(task_list: &Vec<Task>) {
         }
     }
 }
-fn view_pending_task(task_list: &Vec<Task>) {}
-fn mark_completed(task_list: &mut Vec<Task>) {}
+fn view_pending_task(task_list: &Vec<Task>) {
+    if task_list.is_empty() {
+        println!("No tasks are found");
+        return;
+    }
+    for task in task_list {
+        if task.completed == false {
+            println!("{:?}", task);
+        }
+    }
+}
+fn mark_completed(task_list: &mut Vec<Task>) {
+    if task_list.is_empty() {
+        println!("No tasks are found");
+        return;
+    }
+    println!("please enter the task number, you want to mark completed");
+    view_task(task_list);
+    let mut task_number = String::new();
+    io::stdin()
+        .read_line(&mut task_number)
+        .expect("invalid input");
+    match task_number.trim().parse::<usize>() {
+        Ok(task_number) => {
+            if task_number > task_list.len() {
+                println!("wrong task number");
+                return;
+            }
+            task_list[task_number - 1].completed = true;
+            println!("Task  completed successfully");
+        }
+        Err(_) => {
+            println!("error situation");
+            return;
+        }
+    }
+}
 fn change_priorty(task_list: &mut Vec<Task>) {}
 fn add_task(task_list: &mut Vec<Task>) {
     let mut description = String::new();
