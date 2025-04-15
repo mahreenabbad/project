@@ -610,7 +610,7 @@ impl TaskList {
             return;
         }
         println!("Enter task number to remove task");
-
+        // view task
         view_task(&self);
         let mut task_number = String::new();
         io::stdin()
