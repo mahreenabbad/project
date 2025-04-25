@@ -12,6 +12,7 @@ use solana_program::{
 };
 
 /// Token info
+//struct
 /// //
 #[repr(C)] //This attribute specifies that the struct should have a C-compatible memory layout
 #[derive(Clone, Debug, BorshSerialize, BorshDeserialize, PartialEq)]
