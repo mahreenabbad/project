@@ -45,6 +45,7 @@ pub struct Asset {
     pub enabled: bool,
 }
 //representing the total size of the Asset struct in bytes.
+//implement struct
 impl Asset {
     /// Struct size
     pub const LEN: usize = 1 + 32 + 4 + 32 + 1 + 12 + 32 + 32 + 32 + 8 + 32 + 1 + 1;
