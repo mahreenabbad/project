@@ -6,7 +6,7 @@
 // use std::io;
 // use std::thread::sleep;
 // use std::time::Duration;
-
+//main function
 // fn main() {
 //     loop {
 //         let mut input = String::new();
