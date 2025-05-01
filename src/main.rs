@@ -558,190 +558,193 @@
 // }
 /////////////////////
 /// TO DO list -addtask - remove task, exit
-// use std::io::{self, Read};
-// #[derive(Debug)]
-// struct Task {
-//     description: String,
-//     priority: u8,
-//     completed: bool,
-// }
-// struct TaskList {
-//     task_list: Vec<Task>,
-// }
-// impl Task {
-//     fn new(description: String, priority: u8) -> Self {
-//         Self {
-//             description: description,
-//             priority: priority,
-//             completed: false,
-//         }
-//     }
-// }
-// impl TaskList {
-//     fn new() -> Self {
-//         Self {
-//             task_list: Vec::new(),
-//         }
-//     }
-//     fn add_task(&mut self) {
-//         let mut description = String::new();
-//         println!("Please enter the task description:");
-//         io::stdin()
-//             .read_line(&mut description)
-//             .expect("Invalid Input");
-//         let description = description.trim().to_string();
+use std::io::{self, Read};
+#[derive(Debug)]
+struct Task {
+    description: String,
+    priority: u8,
+    completed: bool,
+}
+struct TaskList {
+    task_list: Vec<Task>,
+}
+impl Task {
+    fn new(description: String, priority: u8) -> Self {
+        Self {
+            description: description,
+            priority: priority,
+            completed: false,
+        }
+    }
+}
+impl TaskList {
+    fn new() -> Self {
+        Self {
+            task_list: Vec::new(),
+        }
+    }
+    fn add_task(&mut self) {
+        let mut description = String::new();
+        println!("Please enter the task description:");
+        io::stdin()
+            .read_line(&mut description)
+            .expect("Invalid Input");
+        let description = description.trim().to_string();
 
-//         let mut priority = String::new();
-//         println!("Please enter the task priority:");
-//         io::stdin().read_line(&mut priority).expect("Invalid Input");
-//         let priority: u8 = priority.trim().parse().expect("Invalid number");
+        let mut priority = String::new();
+        println!("Please enter the task priority:");
+        io::stdin().read_line(&mut priority).expect("Invalid Input");
+        let priority: u8 = priority.trim().parse().expect("Invalid number");
 
-//         if !description.is_empty() && (1..=5).contains(&priority) {
-//             self.task_list.push(Task::new(description, priority));
-//         } else {
-//             println!("Description or priority is invalid");
-//         }
+        if !description.is_empty() && (1..=5).contains(&priority) {
+            self.task_list.push(Task::new(description, priority));
+        } else {
+            println!("Description or priority is invalid");
+        }
+    }
+    //remove task function
+
+    fn remove_task(&mut self) {
+        if self.task_list.is_empty() {
+            println!("No task to remove");
+            return;
+        }
+        println!("Enter task number to remove task");
+        // view task
+        self.view_tas();
+        let mut task_number = String::new();
+        io::stdin()
+            .read_line(&mut task_number)
+            .expect("Invalid Input");
+        match task_number.trim().parse::<usize>() {
+            Ok(task_number) => {
+                if task_number > self.task_list.len() {
+                    println!("wrong task number");
+                    return;
+                }
+                self.task_list.remove(task_number - 1);
+                println!("Task removed successfully");
+            }
+            Err(_) => {
+                println!("error situation");
+                return;
+            }
+        }
+    }
+    //view task function
+    fn view_task(&self) {
+        if self.task_list.is_empty() {
+            println!("No task to show");
+            return;
+        }
+        println!("Task List:{:?} ", self.task_list);
+    }
+}
+fn main() {
+    let mut task_list = TaskList::new();
+    loop {
+        let mut choice = String::new();
+        println!("Please enter your choice");
+        println!("1- Add Task");
+        println!("2- Remove Task");
+        println!("3- View Task");
+        println!("7- change priorty");
+        // choice.clear();
+        io::stdin().read_line(&mut choice).expect("Invalid Input");
+        let choice: i32 = choice.trim().parse().expect("Invalid number");
+
+        match choice {
+            1 => task_list.add_task(),
+            2 => task_list.remove_task(),
+            3 => task_list.view_task(),
+
+            8 => {
+                println!("Exiting the program");
+                break;
+            }
+            _ => println!("Invalid Choice"),
+        }
+    }
+}
+
+fn view_completed_task(task_list: &Vec<Task>) {
+    if task_list.is_empty() {
+        println!("No tasks are found");
+        return;
+    }
+    for task in task_list {
+        if task.completed == true {
+            println!("{:?}", task);
+        }
+    }
+}
+fn view_pending_task(task_list: &Vec<Task>) {
+    if task_list.is_empty() {
+        println!("No tasks are found");
+        return;
+    }
+    for task in task_list {
+        if task.completed == false {
+            println!("{:?}", task);
+        }
+    }
+}
+// fn mark_completed(task_list: &mut Vec<Task>) {
+//     if task_list.is_empty() {
+//         println!("No tasks are found");
+//         return;
 //     }
-//     //remove task function
-
-//     fn remove_task(&mut self) {
-//         if self.task_list.is_empty() {
-//             println!("No task to remove");
-//             return;
-//         }
-//         println!("Enter task number to remove task");
-//         // view task
-//         self.view_tas();
-//         let mut task_number = String::new();
-//         io::stdin()
-//             .read_line(&mut task_number)
-//             .expect("Invalid Input");
-//         match task_number.trim().parse::<usize>() {
-//             Ok(task_number) => {
-//                 if task_number > self.task_list.len() {
-//                     println!("wrong task number");
-//                     return;
-//                 }
-//                 self.task_list.remove(task_number - 1);
-//                 println!("Task removed successfully");
-//             }
-//             Err(_) => {
-//                 println!("error situation");
+//     println!("please enter the task number, you want to mark completed");
+//     view_task(task_list);
+//     let mut task_number = String::new();
+//     io::stdin()
+//         .read_line(&mut task_number)
+//         .expect("invalid input");
+//     match task_number.trim().parse::<usize>() {
+//         Ok(task_number) => {
+//             if task_number > task_list.len() {
+//                 println!("wrong task number");
 //                 return;
 //             }
+//             task_list[task_number - 1].completed = true;
+//             println!("Task  completed successfully");
 //         }
-//     }
-//     //view task function
-//     fn view_task(&self) {
-//         if self.task_list.is_empty() {
-//             println!("No task to show");
+//         Err(_) => {
+//             println!("error situation");
 //             return;
 //         }
-//         println!("Task List:{:?} ", self.task_list);
 //     }
 // }
-// fn main() {
-//     let mut task_list = TaskList::new();
-//     loop {
-//         let mut choice = String::new();
-//         println!("Please enter your choice");
-//         println!("1- Add Task");
-//         println!("2- Remove Task");
-//         println!("3- View Task");
-//         println!("7- change priorty");
-//         // choice.clear();
-//         io::stdin().read_line(&mut choice).expect("Invalid Input");
-//         let choice: i32 = choice.trim().parse().expect("Invalid number");
+// fn change_priorty(task_list: &mut Vec<Task>) {}
 
-//         match choice {
-//             1 => task_list.add_task(),
-//             2 => task_list.remove_task(),
-//             3 => task_list.view_task(),
+//edit task function
 
-//             8 => {
-//                 println!("Exiting the program");
-//                 break;
-//             }
-//             _ => println!("Invalid Choice"),
-//         }
+// fn edit_task(task_list: &mut Vec<Task>) {
+//     if task_list.is_empty() {
+//         println!("No task to edit");
 //     }
+//     println!("Enter task number to' edit task");
+//     view_task(task_list);
+//     let mut task_number = String::new();
+//     io::stdin()
+//         .read_line(&mut task_number)
+//         .expect("Invalid Input");
+//     let task_number: usize = task_number.trim().parse().expect("Invalid number");
+//     println!("type update task");
+//     let mut new_task = String::new();
+//     io::stdin()
+//         .read_line(&mut new_task)
+//         .expect("something wentwrong");
+//     task_list[task_number - 1] = new_task.trim().to_string();
 // }
-
-// // fn view_completed_task(task_list: &Vec<Task>) {
-// //     if task_list.is_empty() {
-// //         println!("No tasks are found");
-// //         return;
-// //     }
-// //     for task in task_list {
-// //         if task.completed == true {
-// //             println!("{:?}", task);
-// //         }
-// //     }
-// // }
-// // fn view_pending_task(task_list: &Vec<Task>) {
-// //     if task_list.is_empty() {
-// //         println!("No tasks are found");
-// //         return;
-// //     }
-// //     for task in task_list {
-// //         if task.completed == false {
-// //             println!("{:?}", task);
-// //         }
-// //     }
-// // }
-// // fn mark_completed(task_list: &mut Vec<Task>) {
-// //     if task_list.is_empty() {
-// //         println!("No tasks are found");
-// //         return;
-// //     }
-// //     println!("please enter the task number, you want to mark completed");
-// //     view_task(task_list);
-// //     let mut task_number = String::new();
-// //     io::stdin()
-// //         .read_line(&mut task_number)
-// //         .expect("invalid input");
-// //     match task_number.trim().parse::<usize>() {
-// //         Ok(task_number) => {
-// //             if task_number > task_list.len() {
-// //                 println!("wrong task number");
-// //                 return;
-// //             }
-// //             task_list[task_number - 1].completed = true;
-// //             println!("Task  completed successfully");
-// //         }
-// //         Err(_) => {
-// //             println!("error situation");
-// //             return;
-// //         }
-// //     }
-// // }
-// // fn change_priorty(task_list: &mut Vec<Task>) {}
-
-// //edit task function
-
-// // fn edit_task(task_list: &mut Vec<Task>) {
-// //     if task_list.is_empty() {
-// //         println!("No task to edit");
-// //     }
-// //     println!("Enter task number to' edit task");
-// //     view_task(task_list);
-// //     let mut task_number = String::new();
-// //     io::stdin()
-// //         .read_line(&mut task_number)
-// //         .expect("Invalid Input");
-// //     let task_number: usize = task_number.trim().parse().expect("Invalid number");
-// //     println!("type update task");
-// //     let mut new_task = String::new();
-// //     io::stdin()
-// //         .read_line(&mut new_task)
-// //         .expect("something wentwrong");
-// //     task_list[task_number - 1] = new_task.trim().to_string();
-// // }
 ////////////////////////////////////
 /// to prevent dangling refrence
 /// Lifetime
-fn main() {
-    let x: i32 = 10;
-    let y = x;
-    println!(" {}", y);
-}
+// fn main() {
+//     y = 10;
+//     {
+//         let x: i32 = 10;
+//         let y = &x;
+//     }
+//     println!(" {}", y);
+// }
