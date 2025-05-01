@@ -1,12 +1,12 @@
 // use std::io;
 // //Countdown Rust
-
+//practice project for learning purpose
 // //input --- 10
 // //10 9 8 7 6 5 ...1
 // use std::io;
 // use std::thread::sleep;
 // use std::time::Duration;
-
+//main function
 // fn main() {
 //     loop {
 //         let mut input = String::new();

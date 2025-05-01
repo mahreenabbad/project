@@ -12,7 +12,7 @@ use solana_program::{
 
 
 
-//trait
+//trait -interfaces
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
 
 

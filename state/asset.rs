@@ -2,6 +2,7 @@
 // It's used to access items (such as functions, structs, or other modules) defined in the parent scope.
 use super::{try_from_slice_checked, AccountKey};
 use super::{Address, BlockchainId};
+////////
 
 //This refers to the borsh crate, which stands for Binary Object Representation Serializer for Hashing.
 //It's a binary serialization format designed for security-critical projects, emphasizing consistency, safety, and speed.
@@ -12,6 +13,7 @@ use solana_program::{
 };
 
 /// Token info
+//struct
 /// //
 #[repr(C)] //This attribute specifies that the struct should have a C-compatible memory layout
 #[derive(Clone, Debug, BorshSerialize, BorshDeserialize, PartialEq)]
@@ -44,6 +46,7 @@ pub struct Asset {
     pub enabled: bool,
 }
 //representing the total size of the Asset struct in bytes.
+//implement struct
 impl Asset {
     /// Struct size
     pub const LEN: usize = 1 + 32 + 4 + 32 + 1 + 12 + 32 + 32 + 32 + 8 + 32 + 1 + 1;
