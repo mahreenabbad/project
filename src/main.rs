@@ -1,5 +1,5 @@
 // use std::io;
-// //Countdown Rust
+// //Countdown
 //practice project for learning purpose
 // //input --- 10
 // //10 9 8 7 6 5 ...1
