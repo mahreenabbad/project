@@ -741,7 +741,7 @@ fn view_pending_task(task_list: &Vec<Task>) {
 // }
 ////////////////////////////////////
 /// to prevent dangling refrence
-/// Lifetime annotation
+/// Lifetime annotation added
 // fn main() {
 //     y = 10;
 //     {
