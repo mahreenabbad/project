@@ -79,7 +79,8 @@
 //     println!("Hexadecimal number :{}", hex);
 // }
 //////////////////////////////////////////////////
-/// //  create a baking application
+/// //  create a banking application
+//with functions
 // take input from the user
 // 1- deposit money
 //2- withdraw money
