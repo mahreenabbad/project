@@ -388,7 +388,7 @@
 //     }
 // }
 /////////////////////////////////////////////////
-/// trait
+/// trait and structs
 // struct Student {
 //     name: String,
 // }
