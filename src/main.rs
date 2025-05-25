@@ -3,9 +3,8 @@
 //practice project for learning purpose
 // //input --- 10
 // //10 9 8 7 6 5 ...1
+//rust programs
 // use std::io;
-
-
 // use std::thread::sleep;
 // use std::time::Duration;
 //main function
