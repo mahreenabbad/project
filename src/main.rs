@@ -80,7 +80,7 @@
 //     println!("Hexadecimal number :{}", hex);
 // }
 //////////////////////////////////////////////////
-/// //  create a banking application
+/// //  create a banking application in rust
 //with functions
 // take input from the user
 // 1- deposit money
