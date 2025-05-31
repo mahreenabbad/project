@@ -5,7 +5,9 @@ use solana_program::{
     pubkey::Pubkey,
 };
 
-/// Information about the bridge
+
+
+/// Information about the bridge functions
 #[repr(C)]
 #[derive(Clone, Debug, BorshSerialize, BorshDeserialize, PartialEq)]
 pub struct Bridge {
@@ -26,7 +28,7 @@ pub struct Bridge {
 
 const BP: u128 = 10000;
 const BP_SQUARED: u128 = BP * BP;
-
+//impementation of bridge functions
 impl Bridge {
     /// Struct size
     pub const LEN: usize = 1 + 32 + 32 + 1 + 32 + 32 + 1 + 32 + 8 + 32 + 8;

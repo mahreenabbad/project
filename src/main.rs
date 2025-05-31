@@ -1,8 +1,11 @@
 // use std::io;
-// //Countdown Rust
+// //Countdown
+
+
 //practice project for learning purpose
 // //input --- 10
 // //10 9 8 7 6 5 ...1
+//rust programs
 // use std::io;
 // use std::thread::sleep;
 // use std::time::Duration;
@@ -79,7 +82,8 @@
 //     println!("Hexadecimal number :{}", hex);
 // }
 //////////////////////////////////////////////////
-/// //  create a baking application
+/// //  create a banking application in rust
+//with functions
 // take input from the user
 // 1- deposit money
 //2- withdraw money
@@ -387,7 +391,7 @@
 //     }
 // }
 /////////////////////////////////////////////////
-/// trait
+/// trait and structs
 // struct Student {
 //     name: String,
 // }
@@ -741,7 +745,7 @@ fn view_pending_task(task_list: &Vec<Task>) {
 // }
 ////////////////////////////////////
 /// to prevent dangling refrence
-/// Lifetime annotation
+/// Lifetime annotation added
 // fn main() {
 //     y = 10;
 //     {
