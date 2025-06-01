@@ -29,7 +29,7 @@ const sendSolInstruction = SystemProgram.transfer({
   toPubkey: toPubKey,
   lamports: 1000,
 });
-
+//aad instructions to
 transaction.add(sendSolInstruction);
 
 (async () => {
