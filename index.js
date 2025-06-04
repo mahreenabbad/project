@@ -7,7 +7,7 @@ import {
   SystemProgram,
   sendAndConfirmTransaction,
 } from "@solana/web3.js";
-
+//create connection 
 const connection = new Connection("https://api.devnet.solana.com", "confirmed");
 const transaction = new Transaction();
 
