@@ -16,7 +16,7 @@ const secretKey = Uint8Array.from([
   171, 80, 172, 23, 180, 220, 120, 248, 226, 2, 174, 66, 158, 229, 64, 252, 64,
   245, 84, 206, 254, 9, 201, 250, 101, 34, 64, 166, 243, 150, 222, 165, 90, 6,
   245, 185, 158, 160, 23, 94, 207, 233, 232, 62, 223, 135, 226, 156,
-]);
+])//generate keypair
 const keyPair = Keypair.fromSecretKey(secretKey);
 const senderPublicKey = keyPair.publicKey.toBase58();
 console.log(senderPublicKey);
